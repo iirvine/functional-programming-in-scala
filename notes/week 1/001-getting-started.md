@@ -69,7 +69,7 @@ But it does not define an operator to change a sequence element while keeping th
 Some languages do get this right; ie, Java's strings are immutable; Java does not give you an operator to change a character in a string while keeping the string the same
 
 ##Consequences for Programming
-If we want to implement high-level concepts following their mathematical theories, there's no place for mutaion
+If we want to implement high-level concepts following their mathematical theories, there's no place for mutation
 
 * the theories do not admit it
 * mutation can destroy useful laws in the theories
@@ -92,5 +92,4 @@ In a wider sense, a FPL enables the construction of elegant programs that focus 
 * they can be defined anywhere, including inside other functions; you can define a string anywhere, you should be able to define a function anywhere
 * like any other value, they can be passed as parameters to functions and returned as results
 * as for other values, there exists a set of operators to compose functions into richer functions
-
 
