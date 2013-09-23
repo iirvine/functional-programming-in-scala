@@ -27,15 +27,16 @@ How do we define meaning for boolean expressions? Well, simply by giving rewrite
 
 > !true --> false
 
->!false --> true
+> !false --> true
 
 True and some other expression *e* will always give you the same as *e*; false and some other expression *e* will always give you false
 > true && e --> e
 
->false && e --> false
+> false && e --> false
 
 Rules for or are analogous for rules of and; they're the duals of those
 > true || e --> true
+
 > false || e --> e
 
 Note that && and || do not always need their right operand to be evaluated; we say these expressions use short-circuit evaluation
