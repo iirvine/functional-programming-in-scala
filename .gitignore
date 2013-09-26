@@ -14,5 +14,13 @@ project/plugins/project/
 
 # Eclipse
 .metadata
+.classpath
+.project
+.worksheet
+bin/
 
-code/hw/*
+# IntelliJ
+*.iml
+.idea/*
+
+hw/
