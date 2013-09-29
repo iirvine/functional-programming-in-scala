@@ -51,6 +51,7 @@ val y = x + 1; y * y
 ```
 
 How to write expressions that span several lines? Two ways:
+
 ![img](http://i.imgur.com/vSsO9eP.png)
 
 or,
