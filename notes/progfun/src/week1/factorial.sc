@@ -5,5 +5,5 @@ object excersie {
 			else loop(acc * n, n-1)
 		loop(1, n)
 	}                                         //> factorial: (n: Int)Int
-	factorial(4)                              //> res0: Int = 24
+	factorial(3)                              //> res0: Int = 6
 }

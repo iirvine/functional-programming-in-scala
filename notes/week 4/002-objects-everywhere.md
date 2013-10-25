@@ -59,4 +59,3 @@ object false extends Boolean {
 Each of them would be an object; for the true constant, all we need to do is define what the definition of ifThenElse should be for that constant. IE, what is the definition of if (true), thenExpression else elseExpression? well, we've seen from the rewrite rules that this will just become thenExpression
 
 So our true constant is just the implementation of that rewrite rule; we say ifThenElse of a then expression and an else expression gives us the then part. Conversely, ifThenElse of a then part and an else part gives us the else part.
-

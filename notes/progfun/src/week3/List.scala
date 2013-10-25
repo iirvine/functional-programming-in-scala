@@ -1,4 +1,4 @@
-package Cons
+package week3
 
 trait List[T] {
 	def isEmpty: Boolean
