@@ -6,4 +6,8 @@ object excersie {
 		loop(1, n)
 	}                                         //> factorial: (n: Int)Int
 	factorial(3)                              //> res0: Int = 6
+	
+	
+	class IntSet
+	class NonEmpty extends IntSet
 }
