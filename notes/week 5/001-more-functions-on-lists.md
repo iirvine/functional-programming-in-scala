@@ -2,23 +2,23 @@
 
 ###Sublists and element access:
 
-`xs.length` : The number of elements of `xs`.
-`xs.last`   : The lists's last element, exception if `xs` is empty
-`xs.init`   : A list consisting of all elements of `xs` except the last one, exception if `xs` is empty
-`xs take n` : A list consisting of the first `n` elements of `xs`, or `xs` itself if it is shorter than `n`
-`xs drop n` : The rest of the collection after taking `n` elements
-`xs(n)`		: The element of `xs` at index `n`
+* `xs.length` : The number of elements of `xs`.
+* `xs.last`   : The lists's last element, exception if `xs` is empty
+* `xs.init`   : A list consisting of all elements of `xs` except the last one, exception if `xs` is empty
+* `xs take n` : A list consisting of the first `n` elements of `xs`, or `xs` itself if it is shorter than `n`
+* `xs drop n` : The rest of the collection after taking `n` elements
+* `xs(n)`		: The element of `xs` at index `n`
 
 ###Creating new lists:
 
-`xs ++ ys`        : the list cinsisting of all elements of `xs` followed by all elements of `ys`
-`xs.reverse`      : the list containing the elements of `xs` in reversed order
-`xs.updated(n,x)` : In a sense, the functional equivalent of mutable elements in an array. We can't exactly do that, since lists are immutable - what we can do is return a new list, that contains all the elements of `xs`, except at the given index, where it contains `x`.
+* `xs ++ ys`        : the list cinsisting of all elements of `xs` followed by all elements of `ys`
+* `xs.reverse`      : the list containing the elements of `xs` in reversed order
+* `xs.updated(n,x)` : In a sense, the functional equivalent of mutable elements in an array. We can't exactly do that, since lists are immutable - what we can do is return a new list, that contains all the elements of `xs`, except at the given index, where it contains `x`.
 
 ###Finding elements
 
-`xs indexOf x`  : the index of the first element in `xs` equal to `x`, or -1 if `x` does not appear in `xs`
-`xs contains x` : the same as `xs indexOf x >= 0`
+* `xs indexOf x`  : the index of the first element in `xs` equal to `x`, or -1 if `x` does not appear in `xs`
+* `xs contains x` : the same as `xs indexOf x >= 0`
 
 ###Implementation Issues
 
