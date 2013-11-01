@@ -63,20 +63,3 @@ abstract class List[T] {
 There are a LOT of methods that extract sublists from a list based on some predicate. More than I feel like typing out.
 
 ![img](http://i.imgur.com/B6d4CcM.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
