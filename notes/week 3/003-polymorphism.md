@@ -38,7 +38,7 @@ class Cons(_head: Int, _tail:IntList) extends IntList {
 A list is either
 
 * an empty list `new Nil`, or
-* a list `Cons(x, xs) consisting of a `head` element x and a `tail` list xs
+* a list `Cons(x, xs)` consisting of a `head` element x and a `tail` list xs
 
 ###Type Parameters
 There's one problem with our type hierarchy - it's way too narrow to only define lists with `Int` elements. If we did it that way, we'd need a type hierarchy for `Double`, `Boolean`, and so on...
