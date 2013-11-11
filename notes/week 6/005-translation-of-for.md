@@ -17,7 +17,7 @@ def filter[T](xs: List[T, p: T => Boolean]): List[T] =
 
 In Reality, it goes the other way - the scala compiler expresses for-expressions in terms of `map`, `flatMap`, and a lazy variant of `filter`. 
 
-Here's a simple example: 
+Here's a simple example. A simple for expression that consists of just one generator, that consists of arbitrary expressions `e1` and `e2`, will be translated to an application of `map`. 
 
 ```scala
 for (x <- e1) yield e2
@@ -26,4 +26,72 @@ for (x <- e1) yield e2
 
 e1.map(x => e2)
 ```
+
+A for-expression that has a generator followed by a filter, which is in turn followed by further generators or filters, here subsumed by `s`
+
+```scala
+for (x <- e1 if f; s) yield e2
+```
+
+can be rewritten to another for expression, that contains a generator, and the filter has been absorbed into the generator:
+
+```scala
+for (x <- e1.withFilter(x => f); s) yield e2
+```
+
+At first approximation, we can read `withFilter` like `filter`; the generator will be reduced to all those elements that pass the condition `f`.
+
+`withFilter` is actually a _lazy_ variant of `filter`, meaning, it doesn't immediately produce a new datastructure of all the filtered elements. That would be _wasteful_.
+
+Instead, it remembers that any following call to `map` or `flatMap` has to be filtered by the function `f`. 
+
+The third and last form of for-expressions is the one where a leading generator is followed not by a filter but another generator:
+
+```scala
+for (x <- e1; y <- e2; s) yield e3
+```
+
+Again that can be followed by an arbitrary sequence of filters and generators `s`. That for expression will be translated into a call of `flatMap`.
+
+The idea here is that we take the for expression that takes all the remaining computations (so, we generate a `y` from `e2`, and do some more stuff, and then yield `e3`), that would be a collection-valued operation, because `y <- e2` is a generator.
+
+So what we need to do is take everything that comes out of this for-expression and `flatMap` it, concatenating it all into the result list. Which is precisely what happens:
+
+```scala
+e1.flatMap(x => for (y <- e2; s) yield e3)
+```
+
+So what happened in the first case is that we translated directly into an application of `map`; in the second and third case, we translated into another for-expression that has one less element, either one fewer filter, or one fewer generator.
+
+Each of these translation steps can be repeated, yielding simpler and simpler for-expressions until finally we must hit the simplest case that must translate to a map.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
