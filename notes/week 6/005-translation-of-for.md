@@ -65,33 +65,52 @@ So what happened in the first case is that we translated directly into an applic
 
 Each of these translation steps can be repeated, yielding simpler and simpler for-expressions until finally we must hit the simplest case that must translate to a map.
 
+Take the for expression that computed pairs whose sum is prime:
 
+```scala
+for {
+    i <- 1 until n
+    j <- 1 until i
+    if isPrime(i + j)
+} yield (i, j)
+```
 
+Applying the translation scheme to this expression gives us:
 
+```scala
+(1 until n).flatMap(i =>
+    (1 until i).withFilter(j => isPrime(i+j))
+        .map(j => (i, j)))
+```
 
+This is almost exactly the expression we came up with first! _WOW_.
 
+Let's translate a query on our books database, like 
 
+```scala
+for (b <- books; a <- b.authors if a startsWith "Bird")
+yield b.title
+```
 
+```scala
+books.flatMap(b => 
+    // translated to:
+    // for (a <- b.authors if a startsWith "Bird") yield b.title)
+    // translated to:
+    // for (a <- b.authors withFilter(a => a.startsWith "Bird")) yield b.title
+    //translated to:
+    // b.authors withFilter(a => a.startsWith "Bird") map (y => y.title)
+```
 
+Interestingly, the translation of for is not limited to just lists or sequences, or even collections; it is based solely on the presence of the methods `map`, `flatMap`, and `withFilter`.
 
+This lets us use the syntax for our own types as well - we must only define those three functions for these types. 
 
+There are many types for which this is useful; arrays, iterators, databases, XML data, optional values, parsers.
 
+###For and Databases
+For example, `books` might not be a list, but a database stored on some server.
 
+As long as the client interface to the database defines the methods `map`, `flatMap`, and `withFilter`, we can use the `for` syntax for querying the database. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This is the basis for the scala data base connection frameworks, like ScalaQuery and Slick. Similar ideas underly Microsoft's LINQ framework.
