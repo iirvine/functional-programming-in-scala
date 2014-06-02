@@ -18,6 +18,10 @@ This pattern can be abstracted out using the generic method `reduceLeft`; this i
 
 Here's a pretty drawing martin did for us:
 
+
+Here's a change from jekyl, dawg.
+
+
 ![img](http://i.imgur.com/sh4mMtU.png)
 
 Using `reduceLeft`, we can simplify:
