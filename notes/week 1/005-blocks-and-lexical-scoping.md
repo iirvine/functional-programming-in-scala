@@ -1,4 +1,4 @@
-##Blocks and Lexical Scoping
+## Blocks and Lexical Scoping
 
 It's good functional programming style to split up a task into many small functions; but the names of functions like sqrtIter, improve, and isGoodEnough matter only for the *implementation* of sqrt, not for its usage.
 
@@ -23,7 +23,7 @@ Blocks are expressions in scala, so they can be used everywhere an expression ca
 def sqrt(x: Double) = {  }
 ```
 
-###Blocks and Visibility
+### Blocks and Visibility
 
 The definitions inside a block are only visible from within the block
 
@@ -40,10 +40,10 @@ val result = {
 
 f is visible here - it refers to the outer block. but the name x here refers to the inner x - it is shadowing the outer name.
 
-###Lexical Scoping
+### Lexical Scoping
 Definitions of outer blocks are visible inside a block unless they are shadowed;
 
-###Semicolons
+### Semicolons
 In scala, semicolons at the end of lines are in most cases optional. The only case where you would need them is when you want to put multiple statements on one line, eg:
 
 ```scala
