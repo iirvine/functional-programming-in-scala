@@ -1,6 +1,6 @@
-##Tail Recursion
+## Tail Recursion
 
-###Review: Evaluating a Function Application
+### Review: Evaluating a Function Application
 One simple rule: one evaluates a function application f(e1,....,en)
 
   - by evaluating the expressions e1,...,en resulting in the values v1,...,vn, then
@@ -40,7 +40,7 @@ If we come back to gcd, we see that the reduction sequence essentially oscillate
 
 Factorial on the other hand, in each couple of steps we add one more element to our expression; our expression becomes bigger and bigger, until the end when we reduce it to the the final value.
 
-###Tail Recursion
+### Tail Recursion
 That difference in the rewriting rules translates to an actual difference in execution on a computer; in fact it turns out if you have a recursive function that calls itself as its last action, then you can reuse the stak frame of that function. This is called *tail recursion*.
 
 By applying that trick, a tail recursive function can execute in constant stack space; it's really just another formulation of an iterative process. You could say that a tail recursive function is just the functional form of a loop - and it executes just as efficiently as a loop.
@@ -51,7 +51,7 @@ On the other hand, in factorial after the call to factorial(n-1), there's still 
 
 Both factorial and gcd only call itself; of course, a function can also call other functions. The generalization of tail recursion is that if the last action of a function consists of calling another function, maybe the same, maybe another, the stack frame could be reused for both functions. Such calls are called *tail calls*
 
-###Tail Recursion in Scala
+### Tail Recursion in Scala
 Should every function be tail recursive? Not really... in scala, only directly recursive calls to the current function are optimized. The interest of tail recursion is only to avoid very deep recursion chains.... most implementations of the JVM limit the amount of recursion to a couple thousand stack frames. If the input data is such that these deep recursive chains could happen, it makes sense to reformulate your function to be tail recursive to run in constant stack space, to avoid stack overflow exceptions.
 
 On the other hand, if your input data are not susceptible to deep recursive trains, clarity trumps efficiency - write your function the clearest way you can (which often is not tail recursive).
