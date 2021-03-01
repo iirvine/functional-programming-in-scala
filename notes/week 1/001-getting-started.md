@@ -1,6 +1,6 @@
 # Week One: Getting Started
 
-##Programming Paradigms
+## Programming Paradigms
 Three main programming paradigms:
 
 * imperative programming
@@ -30,7 +30,7 @@ It turns out that this model of a computer has shaped programming to no small de
 
 That's all very well - but the problem is scaling up. We want to avoid thinking about programs just word by word. We want to reason in larger structures...
 
-##Scaling Up
+## Scaling Up
 In the end, the pure imperative programming paradigm is limited by the "Von Neumann" bottleneck: 
 >*One tends to conceptualize data structures word-by word.*
 
@@ -38,7 +38,7 @@ If want to scale up, we have to define higher level abstractions; collections, p
 
 Ideally, to be thorough, we need to develop *theories* of these higher level abstractions so that we are able to reason about them.
 
-##What is a theory precious
+## What is a theory precious
 In mathematics, a theory consists of:
 
 * one or more data types
@@ -47,7 +47,7 @@ In mathematics, a theory consists of:
 
 Here's what's important: *a theory in mathematics does not describe mutations.* IE, changing something while keeping the identity the same.
 
-##Theories without Mutation
+## Theories without Mutation
 For instance, the theory of polynomials defines the sum of two polynomials by laws such as
 >_(a*x + b) + (c*x + d) = (a+c)*x + (b+d)_
 
@@ -68,7 +68,7 @@ But it does not define an operator to change a sequence element while keeping th
 
 Some languages do get this right; ie, Java's strings are immutable; Java does not give you an operator to change a character in a string while keeping the string the same
 
-##Consequences for Programming
+## Consequences for Programming
 If we want to implement high-level concepts following their mathematical theories, there's no place for mutation
 
 * the theories do not admit it
@@ -80,7 +80,7 @@ Therefore, let's:
 * avoid mutations
 * have powerful ways to abstract and compose functions
 
-##Functional Programming
+## Functional Programming
 In a *restricted* sense, functional programming means programming without mutable variables, assignments, loops, or other imperative control structures... It takes a lot of things away.
 
 In a *wider* sense, FP means focusing on the functions. In particular, function can be values that are produced, consumed, and composed
