@@ -1,4 +1,4 @@
-#Elements of Programming
+# Elements of Programming
 Every non trivial programming language provides:
 
 * primitive expressions representing the simplest elements
@@ -6,10 +6,10 @@ Every non trivial programming language provides:
 * ways to *abstract* expressions, which introduce a name for an expression by which it can then be referred to
 
 
-###The read-eval-print Loop
+### The read-eval-print Loop
 Functional programming is a bit like using a calculator... most functional languages have an interactive shell, or REPL, that lets us write expressions and responds with their value. We can start the scala repl by typing scala, or by typing sbt console 
 
-###Evaluation 
+### Evaluation 
 A non-primitive expression is evaluated as follows:
 
 * take the leftmost operator
@@ -20,7 +20,7 @@ A name is evaluated by replacing it with the right hand side of its definition.
 
 We apply these steps one by one until an evaluation results in a value - for the moment, a value is just a number.
 
-####Example
+#### Example
 >_(2 * pi) * radius_
 
 First we look up the value of pi:
@@ -34,18 +34,18 @@ Then we look up the value for radius and finally we perform our final multiplica
 
 > _62.8318_
 
-###Parameters
+### Parameters
 Definitions can have parameters - for instance:
 
     def square(x: Double) = x * x
     def sumOfSquares(x: Double, y: Double) = square(x) + square(y)
 
-###Parameter and Return Types
+### Parameter and Return Types
 Function parameters come with their type, given after a colon. If a return type is given, it follows the parameter list
 
     def power(x: Double, y: Int): Double = ...
 
-###Evaluation of Function Applications
+### Evaluation of Function Applications
 Applications of parameterized functions are evaluated in a similar way as operators:
 
 * evaluate all function arguments, left to right
@@ -74,7 +74,7 @@ then we repeat the process with the square application
 
 >_25_
 
-###The substitution model
+### The substitution model
 This scheme of expression evaluation is called the substitution model. The idea is that all evaluation does is *reduce an expression to a value*
 
 Simple as it is, it's been shown that it can express every algorithm, and thus is equivalent to a Turing machine.  ([Alonzo Church and the lambda calculus](http://en.wikipedia.org/wiki/Lambda_calculus))
@@ -89,7 +89,7 @@ In other words, the express c++ has a side effect on the current value of the va
 
 One of the motivations for ruling out side effects in FP is that we can keep to a simple model of evaluation.
 
-###Termination
+### Termination
 Once we have the substitution model, another question comes up: does every expression reduce to a value (in a finite number of steps?)
 
 Nope. Eg:
@@ -103,7 +103,7 @@ So, what would happen here? According to our model, we have to evaluate that nam
 
 We have reduced the name to itself, so this expression will never terminate.
 
-###Changing the evaluation strategy
+### Changing the evaluation strategy
 The scala interpreter will reduce function arguments to values before rewriting the function application - that's not the only evaluation strategy.
 
 One could alternatively apply the function to unreduced arguments:
@@ -128,7 +128,7 @@ We keep it around until the last possible evaluation, even ending up with an eva
 
 >_25_
 
-###Call by name and Call by value
+### Call by name and Call by value
 We've seen two evaluation strategies - the first is call by value, and the last is call by name. 
 
 An important theory of lamda calculus is that both strategies reduce to the same final values, as long as:
@@ -143,7 +143,7 @@ Call by name has the advantage that a function argument is not evaluated at all 
 Call by value is basically, reduce all parameters first, then apply functions
 Call by name is basically, apply functions, then reduce parameters
 
-###CBN, CBV, and termination
+### CBN, CBV, and termination
 We know that the two evaluation strategies reduce an expression to the same value, as long as both evaluations terminate. What if they don't terminate?
 
 There we have an important theorum, which says if the CBV evaluation of an expression e terminates, then CBN evaluation of e terminates too.
@@ -160,7 +160,7 @@ Under CBN, we'll reduce the first expression without reducing the argument, and 
 
 Under CBV, we have to reduce the arguments to this expression, so we have to reduce loop - loop reduces to itself, infinitely, and we'd make no progress
 
-###Scala's evaluation strategy
+### Scala's evaluation strategy
 Scala normally uses call by value. Why? Well, in practice it turns out that CBV is exponentially more efficient than CBN, because it avoids this repeated recomputation of argument expressions that CBN entails.
 
 Other argument for CBV is that it plays much nicer with imperative effects and side effects, because you tend to know much better when expressions will be evaluated
