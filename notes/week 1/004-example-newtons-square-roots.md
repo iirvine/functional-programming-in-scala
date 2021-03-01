@@ -1,6 +1,6 @@
-###Example: Square Roots with Newton's method
+### Example: Square Roots with Newton's method
 
-###Task
+### Task
 We will define a function sqrt such that
 
 ```scala
