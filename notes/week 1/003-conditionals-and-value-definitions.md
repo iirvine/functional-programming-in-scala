@@ -1,4 +1,4 @@
-###Conditional Expressions
+### Conditional Expressions
 
 To express choosing between two alternatives, Scala has a conditional expression if-else
 
@@ -10,7 +10,7 @@ def abs(x: Int) = if (x >= 0) x else -x
 
 x >=0 is a *predicate*, of type Boolean
 
-####Boolean expressions 
+#### Boolean expressions 
 
 can be composed of 
 
@@ -22,7 +22,7 @@ can be composed of
 
 > b || b  //Disjunction
 
-####Rewrite rules for Booleans
+#### Rewrite rules for Booleans
 How do we define meaning for boolean expressions? Well, simply by giving rewrite rules, which give some template for boolean expressions on the left, and how to rewrite it on the right
 
 > !true --> false
@@ -41,7 +41,7 @@ Rules for or are analogous for rules of and; they're the duals of those
 
 Note that && and || do not always need their right operand to be evaluated; we say these expressions use short-circuit evaluation
 
-####Value Definitions
+#### Value Definitions
 We have seen that function parameters can be passed by value or be passed by name - the same distinction applies to definition. 
 
 The ```def``` form is in a sense, call by name; it's right and side is evaluated on each use. 
@@ -58,7 +58,7 @@ val y = square(x)
 
 The right hand side of a val definition is evaluated at the point of the definition itself. Afterwards, the name refers to the value - for instance, y above refers to 4, not to square(2).
 
-####Value Definitions and Termination
+#### Value Definitions and Termination
 The difference between the ```val``` and ```def``` forms becomes apparent when the right hand side doesn't terminate
 
 ```scala
